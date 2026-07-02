@@ -27,7 +27,8 @@
 
         body {
             min-height: 100vh;
-            background-color: #f8fafc;
+            /* 背景颜色稍微加深，从 #f8fafc 调整为 #f1f5f9 */
+            background-color: #f1f5f9;
             /* 现代系统字体栈 */
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -39,27 +40,59 @@
             color: var(--text-main);
         }
 
-        /* 纯CSS背景光晕效果 */
+        /* 纯CSS背景光晕效果 - 添加漂浮动画 */
         .bg-glow-1 {
             position: absolute;
             top: -10%;
             left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
             z-index: -1;
+            animation: float-glow-1 20s ease-in-out infinite alternate;
         }
 
         .bg-glow-2 {
             position: absolute;
             bottom: -10%;
             right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
             z-index: -1;
+            animation: float-glow-2 25s ease-in-out infinite alternate;
+        }
+
+        /* 光晕1的漂浮动画：平移 + 缩放 */
+        @keyframes float-glow-1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(10%, 15%) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-5%, 5%) scale(0.95);
+            }
+        }
+
+        /* 光晕2的漂浮动画：平移 + 缩放 */
+        @keyframes float-glow-2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-15%, -10%) scale(1.2);
+            }
+
+            100% {
+                transform: translate(5%, -15%) scale(0.9);
+            }
         }
 
         /* 卡片主体（磨砂玻璃质感） */
